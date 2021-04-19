@@ -1,0 +1,63 @@
+<div style="width: 400px; margin: auto;">
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <!-- Name input -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    id="name"
+                    [(ngModel)]="customer.name"
+                    required
+                />
+            </div>
+            <!-- Phone number input -->
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="phone"
+                    id="phone"
+                    [(ngModel)]="customer.phone"
+                    required
+                />
+            </div>
+            <!-- Address input -->
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="address"
+                    id="address"
+                    [(ngModel)]="customer.address"
+                    required
+                />
+            </div>
+            <!-- Zipcode input -->
+            <div class="form-group">
+                <label for="zip">Zipcode</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="zip"
+                    id="zip"
+                    [(ngModel)]="customer.zip"
+                    required
+                />
+            </div>
+
+            <!-- save button -->
+            <button (click)="saveCustomer()" class="btn btn-success">Submit</button>
+        </div>
+
+        <!-- upon successfull submittal... -->
+        <div *ngIf="submitted">
+            <h4>You submitted successfully!</h4>
+            <button class="btn btn-success" (click)="newCustomer()">Add</button>
+        </div>
+    </div>
+</div>
