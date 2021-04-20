@@ -9,13 +9,15 @@ import { AddCustomerComponent } from './customer/components/add-customer/add-cus
 import { CustomerListComponent } from './customer/components/customer-list/customer-list.component';
 import { CustomerDetailsComponent } from './customer/components/customer-details/customer-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddCustomerComponent,
     CustomerListComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
