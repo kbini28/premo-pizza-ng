@@ -1,1 +1,72 @@
-<p>customer-list works!</p>
+<div class="list row">
+    <div class="col-md-8">
+        <!-- search bar? (search by phone) -->
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by phone number"
+          [(ngModel)]="phone"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchPhone()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Customer List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let customer of customers; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveCustomer(customer, i)"
+        >
+          {{ customer.name }}
+          <!-- {{ customer.phone }}
+          {{ customer.address }}
+          {{ customer.zip }} -->
+        </li>
+      </ul>
+  
+      <!-- <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTutorials()">
+        Remove All
+      </button> -->
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentCustomer">
+        <h4>Customer</h4>
+        <div>
+          <label><strong>Name:</strong></label> {{ currentCustomer.name }}
+        </div>
+        <div>
+          <label><strong>Phone Number:</strong></label>
+          {{ currentCustomer.phone }}
+        </div>
+        <div>
+          <label><strong>Address:</strong></label>
+          {{ currentCustomer.address }}
+        </div>
+        <div>
+            <label><strong>Zipcode:</strong></label>
+            {{ currentCustomer.zip }}
+          </div>
+  
+        <a class="badge badge-warning" routerLink="/customers/{{ currentCustomer.id }}">
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentCustomer">
+        <br />
+        <p>Please click on a Customer...</p>
+      </div>
+    </div>
+  </div>
+  

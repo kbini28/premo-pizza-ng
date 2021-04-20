@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddCustomerComponent } from './customer/components/add-customer/add-customer.component';
 import { CustomerListComponent } from './customer/components/customer-list/customer-list.component';
+import { CustomerDetailsComponent } from './customer/components/customer-details/customer-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddCustomerComponent,
-    CustomerListComponent
+    CustomerListComponent,
+    CustomerDetailsComponent
   ],
   imports: [
     BrowserModule,
