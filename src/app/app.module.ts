@@ -11,6 +11,9 @@ import { CustomerDetailsComponent } from './customer/components/customer-details
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
+import { AddOrderComponent } from './orders/components/add-order/add-order.component';
+import { OrderDetailsComponent } from './orders/components/order-details/order-details.component';
+import { OrderListComponent } from './orders/components/order-list/order-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { ProductListComponent } from './products/product-list/product-list.compo
     CustomerListComponent,
     CustomerDetailsComponent,
     HomeComponent,
-    ProductListComponent
+    ProductListComponent,
+    AddOrderComponent,
+    OrderDetailsComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
