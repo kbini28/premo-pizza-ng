@@ -10,6 +10,7 @@ import { CustomerListComponent } from './customer/components/customer-list/custo
 import { CustomerDetailsComponent } from './customer/components/customer-details/customer-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
+import { ProductListComponent } from './products/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HomeComponent } from './home/home.component';
     AddCustomerComponent,
     CustomerListComponent,
     CustomerDetailsComponent,
-    HomeComponent
+    HomeComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,

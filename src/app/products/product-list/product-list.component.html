@@ -1,0 +1,45 @@
+<div class="list row">
+    
+    <div class="col-md-6">
+      <h4>Menu</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let product of products; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveProduct(product, i)"
+        >
+          {{ product.name }}
+          {{ product.description }}
+          {{ product.price }}
+        </li>
+      </ul>
+  
+    </div>
+
+    <!-- Not sure if the below is needed -->
+
+    <!-- <div class="col-md-6">
+      <div *ngIf="currentProduct">
+        <h4>Product</h4>
+        <div>
+          <label><strong>Name:</strong></label> {{ currentProduct.name }}
+        </div>
+        <div>
+          <label><strong>Description:</strong></label>
+          {{ currentProduct.description }}
+        </div>
+        <div>
+          <label><strong>Price:</strong></label>
+          {{ currentProduct.price }}
+        </div>
+
+      </div>
+  
+      <div *ngIf="!currentProduct">
+        <br />
+        <p>Menu Loading...</p>
+      </div>
+    </div> -->
+</div>
+  
