@@ -2,6 +2,7 @@ package org.premo.pizza.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,9 +13,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
- * GENERATES ORDERS TABLE FOR YOU
  * An order contains the customer and employee objects (foreign key columns), as well as the date and any discounts which will apply
  * 
  * @author dmiceli
@@ -32,23 +33,35 @@ public class Orders {
 	private BigDecimal discount;
 	
 	@Temporal(TemporalType.DATE)
-	private java.util.Date datePlaced;
-	
+	private Date dateplaced;
+
+	@ManyToOne
 	@JoinColumn(name = "employee")
 	private Employee employee;
-
-	@JoinColumn(name = "customer")
+	
+	@ManyToOne
+	@JoinColumn(name = "customerid")
 	private Customer customer;
+	
 
-  public Orders() {}
-//AUTO GENERATE CONSTRUCTOR, GETTERS, && SETTERS
-	public Orders(BigDecimal discount, Date datePlaced, Employee employee, Customer customer) {
+	public Orders() {
+		
+	}
+	public Orders(BigDecimal discount, 	Date datePlaced, Employee employee, Customer customer){
 		this.discount = discount;
-		this.datePlaced = datePlaced;
+		this.dateplaced = datePlaced;
+		this.employee = employee;
+		this.customer = customer;
+	}
+	public Orders(long id, BigDecimal discount, Date datePlaced, Employee employee, Customer customer){
+		this.id = id;
+		this.discount = discount;
+		this.dateplaced = datePlaced;
 		this.employee = employee;
 		this.customer = customer;
 	}
 
+//AUTO GENERATE GETTERS, && SETTERS
 	public long getId() {
 		return id;
 	}
@@ -65,14 +78,15 @@ public class Orders {
 		this.discount = discount;
 	}
 
-	public java.util.Date getDatePlaced() {
-		return datePlaced;
+	public Date getDateplaced() {
+		return dateplaced;
 	}
-
-	public void setDatePlaced(java.util.Date datePlaced) {
-		this.datePlaced = datePlaced;
+	public void setDateplaced(Date dateplaced)  {
+		//format the date into a Date object ??
+		//SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
+		//this.dateplaced = formatter.parse(dateplaced);
+		this.dateplaced=dateplaced;
 	}
-
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -87,6 +101,11 @@ public class Orders {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+	@Override
+	public String toString() {
+		return "Orders [id=" + id + ", discount=" + discount + ", datePlaced=" + dateplaced + ", employee=" + employee
+				+ ", customer=" + customer + "]";
 	}
 
 }
