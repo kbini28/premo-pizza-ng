@@ -21,11 +21,11 @@ public class OrderDetails {
 	private int quant;
 	
 	@ManyToOne
-	@JoinColumn(name = "product")
+	@JoinColumn(name = "products")
 	private Product product;
 	
 	@ManyToOne
-	@JoinColumn(name = "order")
+	@JoinColumn(name = "orders")
 	private Orders order;
 
 	public OrderDetails() {}
