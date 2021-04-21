@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrdersService } from '../../services/orders.service';
 
 @Component({
   selector: 'app-order-list',
@@ -7,9 +8,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderListComponent implements OnInit {
 
-  constructor() { }
+  orders: any;
+  currentOrder = null;
+  currentIndex = -1;
+  empid = '';
+
+  constructor(private ordersService: OrdersService) { }
 
   ngOnInit(): void {
+    // loads getAll() method on page load
+    this.retrieveOrders();
   }
 
+  // initialize the getAll method
+  retrieveOrders(): void {
+    this.ordersService.getAll().subscribe(data => {
+      this.orders = data;
+      console.log(data);
+    },
+    error => {
+      console.log(error);
+    });
+  }
+
+  // resets the list on refresh 
+  refreshList(): void {
+    this.retrieveOrders();
+    this.currentOrder = null;
+    this.currentIndex = -1;
+  }
+
+  // sets the pointer to the active order?
+  setActiveOrder(order, index) {
+    this.currentOrder = order;
+    this.currentIndex = index;
+  }
+
+  // skipped removeAll method
+
+  // findByEmployeeId() method
+  searchEmpid(): void {
+    this.ordersService.findByEmployeeId(this.empid)
+      .subscribe(data => {
+        this.orders = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      });
+  }
 }

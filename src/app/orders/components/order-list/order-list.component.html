@@ -1,1 +1,82 @@
-<p>order-list works!</p>
+<div class="list row">
+    <div class="col-md-8">
+        <!-- search bar - search by employee id? -->
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Employee ID"
+          [(ngModel)]="empid"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchEmpid()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>List of Orders</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let order of orders; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveOrder(order, i)"
+        >
+          {{ order.empid }}
+          {{ order.custid }}
+          {{ order.dateplaced }}
+
+        </li>
+      </ul>
+  
+      <!-- <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTutorials()">
+        Remove All
+      </button> -->
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentOrder">
+        <h4>Order Details</h4>
+        <div>
+          <label><strong>Employee ID:</strong></label> {{ currentOrder.empid }}
+        </div>
+        <div>
+          <label><strong>Customer ID:</strong></label>
+          {{ currentOrder.custid }}
+        </div>
+        <div>
+          <label><strong>Date:</strong></label>
+          {{ currentOrder.dateplaced }}
+        </div>
+        <!-- is there a way to add a function to add these
+            details to the order-details page? An add button? -->
+        <div>
+            <label><strong>Date:</strong></label>
+            {{ currentOrder.product }}
+        </div>
+        <div>
+            <label><strong>Quantity:</strong></label>
+            {{ currentOrder.quantity }}
+        </div>
+        <div>
+            <label><strong>Discount:</strong></label>
+            {{ currentOrder.discount }}
+        </div>
+  
+        <a class="badge badge-warning" routerLink="/orders/{{ currentorders.ordid }}">
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentOrder">
+        <br />
+        <p>Please click on an Order for details...</p>
+      </div>
+    </div>
+  </div>
+  

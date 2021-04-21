@@ -1,1 +1,94 @@
-<p>order-details works!</p>
+<div style="width: 400px; margin: auto;">
+    <div *ngIf="currentOrder" class="edit-form">
+      <h4>Edit Order</h4>
+      <form>
+        <!-- Employee ID -->
+        <div class="form-group">
+          <label for="empid">Employee ID</label>
+          <input
+            type="text"
+            class="form-control"
+            id="empid"
+            [(ngModel)]="currentOrder.empid"
+            name="empid"
+          />
+        </div>
+        <!-- Customer ID -->
+        <div class="form-group">
+          <label for="custid">Customer ID</label>
+          <input
+            type="text"
+            class="form-control"
+            id="custid"
+            [(ngModel)]="currentOrder.custid"
+            name="custid"
+          />
+        </div>
+        <!-- Date -->
+        <div class="form-group">
+            <label for="dateplaced">Date</label>
+            <input
+                type="text"
+                class="form-control"
+                id="dateplaced"
+                [(ngModel)]="currentOrder.dateplaced"
+                name="dateplaced"
+            />
+        </div>
+        <!-- Product -->
+        <div class="form-group">
+            <label for="product">Product</label>
+            <input
+              type="text"
+              class="form-control"
+              id="product"
+              [(ngModel)]="currentOrder.product"
+              name="product"
+            />
+        </div>
+        <!-- Quantity -->
+        <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input
+              type="text"
+              class="form-control"
+              id="quantity"
+              [(ngModel)]="currentOrder.quantiy"
+              name="quantiy"
+            />
+          </div>
+          <!-- Discount -->
+          <div class="form-group">
+            <label for="discount">Discount</label>
+            <input
+              type="text"
+              class="form-control"
+              id="discount"
+              [(ngModel)]="currentOrder.discount"
+              name="discount"
+            />
+          </div>
+      </form>
+    <!-- SHOULD THERE BE AN ADD BUTTON FOR THIS?
+        to add additional products to this order  -->
+
+      <button class="badge badge-danger mr-2" (click)="deleteOrder()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="badge badge-success"
+        (click)="updateOrder()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentOrder">
+      <br />
+      <p>Cannot access this Order...</p>
+    </div>
+  </div>
+  
