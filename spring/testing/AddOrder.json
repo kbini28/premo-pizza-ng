@@ -1,0 +1,17 @@
+{
+    "dateplaced":{{$timestamp}},
+    "discount":10,
+    "customer": {
+        "id": 1,
+        "address":"2 Swimming River Rd",
+        "name": "Zia",
+        "phone":"2152023221",
+        "zip": 55501
+    },
+    "employee": {
+        "id": 1,
+        "name": "Salvo Spoto",
+        "address":"Via Badia 43",
+        "status":true
+    }
+}
