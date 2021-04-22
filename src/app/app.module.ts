@@ -14,6 +14,9 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { AddOrderComponent } from './orders/components/add-order/add-order.component';
 import { OrderDetailsComponent } from './orders/components/order-details/order-details.component';
 import { OrderListComponent } from './orders/components/order-list/order-list.component';
+import { AddEmployeeComponent } from './employee/components/add-employee/add-employee.component';
+import { EmployeeDetailsComponent } from './employee/components/employee-details/employee-details.component';
+import { EmployeeListComponent } from './employee/components/employee-list/employee-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { OrderListComponent } from './orders/components/order-list/order-list.co
     ProductListComponent,
     AddOrderComponent,
     OrderDetailsComponent,
-    OrderListComponent
+    OrderListComponent,
+    AddEmployeeComponent,
+    EmployeeDetailsComponent,
+    EmployeeListComponent
   ],
   imports: [
     BrowserModule,
