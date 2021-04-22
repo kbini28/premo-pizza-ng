@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Customer } from 'src/app/models/customer.model';
 import { CustomerService } from 'src/app/customer/services/customer.service';
 
 @Component({
@@ -7,8 +8,7 @@ import { CustomerService } from 'src/app/customer/services/customer.service';
   styleUrls: ['./add-customer.component.css']
 })
 export class AddCustomerComponent implements OnInit {
-
-  customer = {
+  customer: Customer = {
     name: '',
     phone: '',
     address: '',
@@ -21,37 +21,33 @@ export class AddCustomerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // save
   saveCustomer(): void {
-    // set the data object for a new customer
     const data = {
       name: this.customer.name,
       phone: this.customer.phone,
       address: this.customer.address,
       zip: this.customer.zip
     };
-    
-    // create and subscribe to this action/response
-    this.customerService.create(data).subscribe(response => {
-      console.log(response);
-      this.submitted = true;
-    },
-    // handle errors
-    error => {
-      console.log(error);
-    });
-  } // end saveCustomer()
 
-  // new customer
+    this.customerService.create(data)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.submitted = true;
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
   newCustomer(): void {
-    // reset all attributes on new customer creation
     this.submitted = false;
     this.customer = {
-      name: '',
-      phone: '',
-      address: '',
-      zip: ''
-    }
-  } // end newCustomer()
+      name: this.customer.name,
+      phone: this.customer.phone,
+      address: this.customer.address,
+      zip: this.customer.zip
+    };
+  }
 
 }

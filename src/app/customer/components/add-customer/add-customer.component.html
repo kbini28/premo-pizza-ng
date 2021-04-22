@@ -1,63 +1,57 @@
-<div style="width: 400px; margin: auto;">
+<div>
     <div class="submit-form">
-        <div *ngIf="!submitted">
-            <!-- Name input -->
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    name="name"
-                    id="name"
-                    [(ngModel)]="customer.name"
-                    required
-                />
-            </div>
-            <!-- Phone number input -->
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    name="phone"
-                    id="phone"
-                    [(ngModel)]="customer.phone"
-                    required
-                />
-            </div>
-            <!-- Address input -->
-            <div class="form-group">
-                <label for="address">Address</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    name="address"
-                    id="address"
-                    [(ngModel)]="customer.address"
-                    required
-                />
-            </div>
-            <!-- Zipcode input -->
-            <div class="form-group">
-                <label for="zip">Zipcode</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    name="zip"
-                    id="zip"
-                    [(ngModel)]="customer.zip"
-                    required
-                />
-            </div>
-
-            <!-- save button -->
-            <button (click)="saveCustomer()" class="btn btn-success">Submit</button>
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            required
+            [(ngModel)]="customer.name"
+            name="name"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input
+            class="form-control"
+            id="phone"
+            required
+            [(ngModel)]="customer.phone"
+            name="phone"
+          />
         </div>
 
-        <!-- upon successfull submittal... -->
-        <div *ngIf="submitted">
-            <h4>You submitted successfully!</h4>
-            <button class="btn btn-success" (click)="newCustomer()">Add</button>
-        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input
+              class="form-control"
+              id="address"
+              required
+              [(ngModel)]="customer.address"
+              name="address"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="zip">Zip Code</label>
+            <input
+              class="form-control"
+              id="zip"
+              required
+              [(ngModel)]="customer.zip"
+              name="zip"
+            />
+          </div>
+  
+        <button (click)="saveCustomer()" class="btn btn-success">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>Customer was submitted successfully!</h4>
+        <button class="btn btn-success" (click)="newCustomer()">Add</button>
+      </div>
     </div>
-</div>
+  </div>

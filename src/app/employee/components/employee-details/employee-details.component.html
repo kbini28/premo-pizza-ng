@@ -1,0 +1,52 @@
+<div>
+    <div *ngIf="currentEmployee.employeeId" class="edit-form">
+      <h4>Employee</h4>
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentEmployee.name"
+            name="name"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label><strong>Status:</strong></label>
+          {{ currentEmployee.status ? "Active" : "Inactive" }}
+        </div>
+      </form>
+  
+      <button
+        class="badge badge-primary mr-2"
+        *ngIf="currentEmployee.status"
+        (click)="updateStatus(false)"
+      >
+        Deactivate
+      </button>
+      <button
+        *ngIf="!currentEmployee.status"
+        class="badge badge-primary mr-2"
+        (click)="updateStatus(true)"
+      >
+        Activate
+      </button>
+  
+  
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateEmployee()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentEmployee.employeeId">
+      <br />
+      <p>Cannot access this Employee...</p>
+    </div>
+  </div>

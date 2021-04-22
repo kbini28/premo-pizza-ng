@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Customer } from '../../models/customer.model';
+import { Employee } from '../models/employee.model';
 
-const baseUrl = 'http://localhost:8080/api/customers';
+const baseUrl = 'http://localhost:8080/api/employees';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerService {
+export class EmployeeService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(baseUrl);
+  getAll(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(baseUrl);
   }
 
-  get(id: any): Observable<Customer> {
+  get(id: any): Observable<Employee> {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
@@ -36,7 +37,7 @@ export class CustomerService {
     return this.http.delete(baseUrl);
   }
 
-  findByName(name: any): Observable<Customer[]> {
-    return this.http.get<Customer[]>(`${baseUrl}?name=${name}`);
+  findByName(name: any): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${baseUrl}?name=${name}`);
   }
 }

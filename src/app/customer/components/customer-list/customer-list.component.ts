@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from 'src/app/customer/services/customer.service';
+import { Customer } from 'src/app/models/customer.model';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -7,53 +8,62 @@ import { CustomerService } from 'src/app/customer/services/customer.service';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-
-  customers: any;
-  currentCustomer = null;
+  customers?: Customer[];
+  currentCustomer?: Customer;
   currentIndex = -1;
-  phone = '';
+  name = '';
 
   constructor(private customerService: CustomerService) { }
 
   ngOnInit(): void {
-    // loads the getAll() method on init
     this.retrieveCustomers();
   }
 
-  // get all customers (loads on initialization)
   retrieveCustomers(): void {
-    this.customerService.getAll().subscribe(data => {
-      this.customers = data;
-      console.log(data);
-    },
-    error => {
-      console.log(error);
-    });
+    this.customerService.getAll()
+      .subscribe(
+        data => {
+          this.customers = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
-  // when list is updated?
   refreshList(): void {
     this.retrieveCustomers();
-    this.currentCustomer = null;
+    this.currentCustomer = undefined;
     this.currentIndex = -1;
   }
 
-  // sets the pointer to the current customer?
-  setActiveCustomer(customer, index) {
+  setActiveCustomer(customer: Customer, index: number): void {
     this.currentCustomer = customer;
     this.currentIndex = index;
   }
 
-  // skipped the removeAllCustomers() method (there is no deleteAll in customer.service.ts)
-
-  // findByPhone() method
-  searchPhone(): void {
-    this.customerService.findByPhone(this.phone).subscribe(data => {
-      this.customers = data;
-      console.log(data);
-    },
-    error => {
-      console.log(error);
-    });
+  removeAllCustomers(): void {
+    this.customerService.deleteAll()
+      .subscribe(
+        response => {
+          console.log(response);
+          this.refreshList();
+        },
+        error => {
+          console.log(error);
+        });
   }
+
+  searchName(): void {
+    this.customerService.findByName(this.name)
+      .subscribe(
+        data => {
+          this.customers = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
 }
