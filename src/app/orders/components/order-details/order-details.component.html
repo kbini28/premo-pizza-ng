@@ -1,50 +1,60 @@
 <div style="width: 400px; margin: auto;">
     <div *ngIf="currentOrder" class="edit-form">
       <h4>Edit Order</h4>
-      <form>
-        <!-- Employee ID -->
-        <div class="form-group">
-          <label for="empid">Employee ID</label>
-          <input
-            type="text"
-            class="form-control"
-            id="empid"
-            [(ngModel)]="currentOrder.empid"
-            name="empid"
-          />
-        </div>
+      
         <!-- Customer ID -->
         <div class="form-group">
-          <label for="custid">Customer ID</label>
-          <input
+          <label for="customer"><strong>Customer: </strong></label> 
+          &nbsp; &nbsp; {{ currentOrder.customer.name }}
+          <!-- <input
             type="text"
             class="form-control"
-            id="custid"
-            [(ngModel)]="currentOrder.custid"
-            name="custid"
-          />
+            disabled
+            [(ngModel)]="currentOrder.customer.name"
+            name="customer"
+          /> -->
         </div>
+        <!-- Employee ID -->
+        <div class="form-group">
+          <label for="employee"><strong>Employee:</strong></label>
+          &nbsp; &nbsp; {{ currentOrder.employee.name }}
+          <!-- <input
+            type="text"
+            class="form-control"
+            disabled
+            [(ngModel)]="currentOrder.employee.name"
+            name="employee"
+          /> -->
+        </div>       
         <!-- Date -->
         <div class="form-group">
-            <label for="dateplaced">Date</label>
-            <input
+            <label for="dateplaced"><strong>Date:</strong></label>
+            &nbsp; &nbsp; {{ currentOrder.dateplaced }}
+            <!-- <input
                 type="text"
                 class="form-control"
-                id="dateplaced"
+                disabled
                 [(ngModel)]="currentOrder.dateplaced"
                 name="dateplaced"
-            />
+            /> -->
         </div>
-        <!-- Product -->
+        <!-- Start the form -->
+        <form>
+          <!-- Product -->
         <div class="form-group">
             <label for="product">Product</label>
-            <input
+            <select name="product" [(ngModel)]="products">
+              <option *ngFor="let prod of products" value="currentOrder.products">
+                {{ products.name }}
+              </option>
+            </select>
+            <!-- <input
               type="text"
               class="form-control"
-              id="product"
+              
               [(ngModel)]="currentOrder.product"
               name="product"
-            />
+            /> -->
         </div>
         <!-- Quantity -->
         <div class="form-group">
@@ -52,9 +62,9 @@
             <input
               type="text"
               class="form-control"
-              id="quantity"
-              [(ngModel)]="currentOrder.quantiy"
-              name="quantiy"
+              
+              [(ngModel)]="currentOrder.quantity"
+              name="quantity"
             />
           </div>
           <!-- Discount -->
@@ -63,7 +73,7 @@
             <input
               type="text"
               class="form-control"
-              id="discount"
+              
               [(ngModel)]="currentOrder.discount"
               name="discount"
             />
@@ -72,16 +82,29 @@
     <!-- SHOULD THERE BE AN ADD BUTTON FOR THIS?
         to add additional products to this order  -->
 
-      <button class="badge badge-danger mr-2" (click)="deleteOrder()">
+      
+
+      <button 
+        class="badge badge-danger mr-2" 
+        (click)="deleteOrder()"
+      >
         Delete
       </button>
   
       <button
         type="submit"
-        class="badge badge-success"
+        class="badge badge-success mr-2"
         (click)="updateOrder()"
       >
-        Update
+        Complete Order
+      </button>
+
+      <button
+        type="submit"
+        class="badge badge-primary mr-2"
+        (click)="addProductToOrder()"
+      >
+        Add Product
       </button>
       <p>{{ message }}</p>
     </div>

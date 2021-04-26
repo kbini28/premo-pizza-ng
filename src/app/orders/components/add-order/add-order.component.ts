@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 // import { combineLatest, Observable } from 'rxjs';
 import { Customer } from 'src/app/models/customer.model';
 import { Employee } from 'src/app/models/employee.model';
+import { Product } from 'src/app/models/product.model';
+import { ProductsService } from 'src/app/products/services/products.service';
 // import { Orders } from 'src/app/models/orders.model';
 import { CustomerService } from 'src/app/services/customer.service';
 import { EmployeeService } from 'src/app/services/employee.service';
@@ -18,6 +20,7 @@ export class AddOrderComponent implements OnInit {
 
   employees: Employee[] = [];
   customers: Customer[] = [];
+  products: Product[] = [];
 
   order = {
     // should i add order and orderDetails models together?
@@ -34,19 +37,26 @@ export class AddOrderComponent implements OnInit {
       status: ''
     },    
     dateplaced: '', // should this be dateplaced: Date?
-    discount: '',
-    quantity: '',
-    product: ''
+    discount: null,
+    quantity: null,
+    product: {
+      id: '',
+      description: '',
+      name: '',
+      price: null
+    }
   }
   submitted = false;
 
   constructor(private ordersService: OrdersService,
               private customerService: CustomerService,
-              private employeeService: EmployeeService) { }
+              private employeeService: EmployeeService,
+              private productsService: ProductsService) { }
 
   ngOnInit(): void {
     this.getCustomerList();
     this.getEmployeeList();
+    this.getProductList();
   }
 
   // get all customers to add to customer array
@@ -71,6 +81,17 @@ export class AddOrderComponent implements OnInit {
     });
   }
 
+  // get all products to populate the product array
+  getProductList(): void {
+    this.productsService.getAll().subscribe(data => {
+      this.products = data;
+      console.log("products: ", data);
+    },
+    error => {
+      console.log(error);
+    });
+  }
+
   // save
   saveOrder(): void {
     // // set the data object for a new order
@@ -78,9 +99,9 @@ export class AddOrderComponent implements OnInit {
       customer: this.customers[this.order.customer.customerId],
       employee: this.employees[this.order.employee.employeeId],
       dateplaced: this.order.dateplaced,
-      // discount: this.order.discount,
-      // quantity: this.order.quantity,
-      // product: this.order.product
+      discount: this.order.discount,
+      quantity: this.order.quantity,
+      product: this.order.product
     };
 
     console.log("data from save: ", data);
@@ -126,9 +147,14 @@ export class AddOrderComponent implements OnInit {
         status: ''
       },
       dateplaced: '',
-      discount: '',
-      quantity: '',
-      product: '',
+      discount: null,
+      quantity: null,
+      product: {
+        id: '',
+        description: '',
+        name: '',
+        price: null
+      }
     }
   } // end newOrder()
 }

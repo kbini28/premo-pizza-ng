@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product.model';
 import { ProductsService } from '../services/products.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class ProductListComponent implements OnInit {
     this.retrieveProducts();
   }
 
+
   retrieveProducts(): void {
     this.productsService.getAll().subscribe(data => {
       this.products = data;
@@ -36,8 +38,8 @@ export class ProductListComponent implements OnInit {
     }
   
     // sets the pointer to the current customer?
-    setActiveProduct(product, index) {
-      this.currentProduct = product;
+    setActiveProduct(products, index) {
+      this.currentProduct = products;
       this.currentIndex = index;
     }
 
