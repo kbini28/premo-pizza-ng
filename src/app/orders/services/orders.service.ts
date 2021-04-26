@@ -20,8 +20,8 @@ export class OrdersService {
   }
 
   // get an order by id (get request)
-  get(ordid): Observable<any> {
-    return this.http.get(`${baseUrl}/${ordid}`);
+  get(id): Observable<any> {
+    return this.http.get(`${baseUrl}/${id}`);
   }
 
   // create a new order (post request)
@@ -30,13 +30,13 @@ export class OrdersService {
   }
 
   // update an order (get id, put request)
-  update(ordid, data): Observable<any> {
-    return this.http.put(`${baseUrl}/${ordid}`, data);
+  update(id, data): Observable<any> {
+    return this.http.put(`${baseUrl}/${id}`, data);
   }
 
   // delete an order (get id, delete request)
-  delete(ordid): Observable<any> {
-    return this.http.delete(`${baseUrl}/${ordid}`);
+  delete(id): Observable<any> {
+    return this.http.delete(`${baseUrl}/${id}`);
   }
 
   // skip the 'delete all' method

@@ -11,7 +11,7 @@ export class OrderListComponent implements OnInit {
   orders: any;
   currentOrder = null;
   currentIndex = -1;
-  empid = '';
+  empid = null;
 
   constructor(private ordersService: OrdersService) { }
 
@@ -24,7 +24,7 @@ export class OrderListComponent implements OnInit {
   retrieveOrders(): void {
     this.ordersService.getAll().subscribe(data => {
       this.orders = data;
-      console.log(data);
+      console.log("order list component: ", data);
     },
     error => {
       console.log(error);
@@ -42,6 +42,7 @@ export class OrderListComponent implements OnInit {
   setActiveOrder(order, index) {
     this.currentOrder = order;
     this.currentIndex = index;
+    console.log("set active order", order, index)
   }
 
   // skipped removeAll method

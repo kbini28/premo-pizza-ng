@@ -1,6 +1,6 @@
 export class Orders {
     id?: any;
-    dateplaces?: string;
+    dateplaced?: string;
     discount?: string;
     customerid?: string;
     employee?: string;

@@ -15,14 +15,14 @@ import { EmployeeListComponent } from './employee/components/employee-list/emplo
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent }, // is this how you do that for home component?
-  { path: 'customerslist', component: CustomerListComponent },
+  { path: 'customers', component: CustomerListComponent },
   { path: 'customers/:id', component: CustomerDetailsComponent },
   { path: 'addcustomer', component: AddCustomerComponent },
   { path: 'menu', component: ProductListComponent },
   { path: 'orders', component: OrderListComponent },
   { path: 'orders/:id', component: OrderDetailsComponent },
   { path: 'add-order', component: AddOrderComponent },
-  { path: 'employeelist', component: EmployeeListComponent },
+  { path: 'employees', component: EmployeeListComponent },
   { path: 'employee/:id', component: EmployeeDetailsComponent },
   { path: 'addemployee', component: AddEmployeeComponent }
 ];

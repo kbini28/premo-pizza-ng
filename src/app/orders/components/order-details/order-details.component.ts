@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OrdersService } from '../../services/orders.service';
+import { OrdersService } from '../../../services/orders.service';
 
 @Component({
   selector: 'app-order-details',
@@ -20,20 +20,20 @@ export class OrderDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.message = '';
-    this.getOrder(this.route.snapshot.paramMap.get('id'));
+    this.currentOrder = this.getOrder(this.route.snapshot.paramMap.get('id'));
   }
 
   getOrder(id): void {
     this.ordersService.get(id).subscribe(data => {
       this.currentOrder = data;
-      console.log(data);
+      console.log("get order?", data);
     },
     error => {
       console.log(error);
     });
   }
 
-  updateOrder(status): void {
+  updateOrder(): void {
     this.ordersService.update(this.currentOrder.id, this.currentOrder)
       .subscribe(response => {
         console.log(response);
@@ -54,4 +54,5 @@ export class OrderDetailsComponent implements OnInit {
         console.log(error);
       });
   }
+  
 }

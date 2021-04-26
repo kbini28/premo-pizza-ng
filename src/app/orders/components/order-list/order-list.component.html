@@ -43,11 +43,11 @@
       <div *ngIf="currentOrder">
         <h4>Order Details</h4>
         <div>
-          <label><strong>Employee ID:</strong></label> {{ currentOrder.empid }}
+          <label><strong>Employee:</strong></label> {{ currentOrder.employee.name }}
         </div>
         <div>
-          <label><strong>Customer ID:</strong></label>
-          {{ currentOrder.custid }}
+          <label><strong>Customer:</strong></label>
+          {{ currentOrder.customer.name }}
         </div>
         <div>
           <label><strong>Date:</strong></label>

@@ -39,4 +39,8 @@ export class CustomerService {
   findByName(name: any): Observable<Customer[]> {
     return this.http.get<Customer[]>(`${baseUrl}?name=${name}`);
   }
+
+  findById(customerId: any): Observable<Customer[]> {
+    return this.http.get<Customer[]>(`${baseUrl}?id=${customerId}`);
+  }
 }

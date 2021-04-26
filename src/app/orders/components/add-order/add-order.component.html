@@ -3,27 +3,30 @@
       <div *ngIf="!submitted">
           <!-- form for creating a new order -->
         <div class="form-group">
-          <label for="custid">Customer ID</label>
+          <label for="customerId">Customer ID</label>
           <input
             type="text"
             class="form-control"
-            id="custid"
+            
             required
-            [(ngModel)]="order.custid"
-            name="custid"
+            [(ngModel)]="order.customer.customerId"
+            name="customerId"
           />
         </div>
   
         <div class="form-group">
-          <label for="empid">Employee ID</label>
+          <label for="employeeId">Employee ID</label>
           <!-- TODO: Can we make this a dropdown,
                 displaying only employees that are 'active'? -->
+          <!-- <select name="employee" [(ngModel)]="order.employee">
+            <option *ngFor="let employee of employees" [(ngValue)]="employee">{{ employee.name }}</option>
+          </select> -->
           <input
             class="form-control"
-            id="empid"
+            
             required
-            [(ngModel)]="order.empid"
-            name="empid"
+            [(ngModel)]="order.employee.employeeId"
+            name="employeeId"
           />
         </div>
 
@@ -32,7 +35,7 @@
             <input
               type="date"
               class="form-control"
-              id="dateplaced"
+              
               required
               [(ngModel)]="order.dateplaced"
               name="dateplaced"

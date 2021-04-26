@@ -40,4 +40,8 @@ export class EmployeeService {
   findByName(name: any): Observable<Employee[]> {
     return this.http.get<Employee[]>(`${baseUrl}?name=${name}`);
   }
+
+  findById(id: any): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${baseUrl}?id=${id}`);
+  }
 }
