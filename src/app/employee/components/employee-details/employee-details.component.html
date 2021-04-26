@@ -1,6 +1,7 @@
 <div>
     <div *ngIf="currentEmployee.employeeId" class="edit-form">
       <h4>Employee</h4>
+      <div *ngIf="!updated">
       <form>
         <div class="form-group">
           <label for="name">Name</label>
@@ -43,6 +44,13 @@
         Update
       </button>
       <p>{{ message }}</p>
+    </div>
+    </div>
+
+    <div *ngIf="updated">
+      <h4>Employee was updated successfully!</h4>
+      <a class="btn btn-success" routerLink="/employeelist">Back to Employee list</a>
+
     </div>
   
     <div *ngIf="!currentEmployee.employeeId">

@@ -1,6 +1,7 @@
 <div>
   <div *ngIf="currentCustomer.customerId" class="edit-form">
     <h4>Customer</h4>
+    <div *ngIf="!updated">
     <form>
       <div class="form-group">
         <label for="name">Name</label>
@@ -62,7 +63,12 @@
       Update
     </button>
     <p>{{ message }}</p>
+    </div>
   </div>
+
+  <div *ngIf="updated">
+    <h4>Customer was updated successfully!</h4>
+    <a class="btn btn-success" routerLink="/customerslist">Back to Customer list</a>
 
   <div *ngIf="!currentCustomer.customerId">
     <br />

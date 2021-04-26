@@ -15,6 +15,8 @@ export class EmployeeDetailsComponent implements OnInit {
     status: false
   };
   message = '';
+  updated = false;
+
 
   constructor(
     private employeeService: EmployeeService,
@@ -57,6 +59,7 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   updateEmployee(): void {
+    this.updated = true;
     this.employeeService.update(this.currentEmployee.employeeId, this.currentEmployee)
       .subscribe(
         response => {
