@@ -17,6 +17,7 @@ import { OrderListComponent } from './orders/components/order-list/order-list.co
 import { AddEmployeeComponent } from './employee/components/add-employee/add-employee.component';
 import { EmployeeDetailsComponent } from './employee/components/employee-details/employee-details.component';
 import { EmployeeListComponent } from './employee/components/employee-list/employee-list.component';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { EmployeeListComponent } from './employee/components/employee-list/emplo
     OrderListComponent,
     AddEmployeeComponent,
     EmployeeDetailsComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,
