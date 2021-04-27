@@ -17,6 +17,7 @@ export class CustomerDetailsComponent implements OnInit {
     zip: ''
   };
   message = '';
+  updated = false;
 
   constructor(
     private customerService: CustomerService,
@@ -61,6 +62,7 @@ export class CustomerDetailsComponent implements OnInit {
   // }
 
   updateCustomer(): void {
+    this.updated = true;
     this.customerService.update(this.currentCustomer.customerId, this.currentCustomer)
       .subscribe(
         response => {
