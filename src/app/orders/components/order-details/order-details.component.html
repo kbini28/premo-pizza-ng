@@ -44,8 +44,8 @@
         <div class="form-group">
             <label for="product">Product</label>
             <select name="product" [(ngModel)]="products">
-              <option *ngFor="let prod of products" value="currentOrder.products">
-                {{ products.name }}
+              <option *ngFor="let prod of products" value="products.product">
+                {{ products.product }}
               </option>
             </select>
             <!-- <input

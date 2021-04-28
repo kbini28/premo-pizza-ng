@@ -18,6 +18,8 @@ import { AddEmployeeComponent } from './employee/components/add-employee/add-emp
 import { EmployeeDetailsComponent } from './employee/components/employee-details/employee-details.component';
 import { EmployeeListComponent } from './employee/components/employee-list/employee-list.component';
 import { ReportsComponent } from './reports/reports.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { ReportsComponent } from './reports/reports.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxChartsModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     NgbModule

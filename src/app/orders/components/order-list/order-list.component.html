@@ -28,9 +28,9 @@
           [class.active]="i == currentIndex"
           (click)="setActiveOrder(order, i)"
         >
-          {{ order.empid }}
-          {{ order.custid }}
-          {{ order.dateplaced }}
+          <strong>Employee:</strong> {{ order.employee.name }} <br>
+          <strong>Customer:</strong> {{ order.customer.name }} <br>
+          <strong>Date:</strong> {{ order.dateplaced }}
 
         </li>
       </ul>
