@@ -1,0 +1,16 @@
+{
+    "quantity":2,
+    "orders": {
+        "id": 2,
+        "dateplaced": "1970-01-19",
+        "discount": 0.00,
+        "customerid": 1,
+        "employee": 1
+    },
+    "products": {
+        "id": 1,
+        "description": "2 Liter bottle",
+        "name": "Soda",
+        "price": 3.25
+    }
+}
