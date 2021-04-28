@@ -76,7 +76,7 @@ export class OrderDetailsComponent implements OnInit {
       .subscribe(response => {
         console.log(response);
         this.message = 'Product added!';
-        this.router.navigate(['/orders/:id']);
+        // this.router.navigate(['/orders/id']);
       },
       error => {
         console.log(error);
