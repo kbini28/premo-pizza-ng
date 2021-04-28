@@ -11,6 +11,6 @@ import org.premo.pizza.model.Orders;
 
 @Repository
 public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Long> {
-
-	List<OrderDetails> findByProductAndOrder(Product product, Orders order);
+  List<OrderDetails> findByOrders(Orders order);
+	List<OrderDetails> findByOrdersContaining(long orderid);
 }
