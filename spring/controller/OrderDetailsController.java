@@ -68,23 +68,34 @@ public class OrderDetailsController {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR); 
 		}
 	}
-	/**
-	 * IN PROGRESS
-	 * @param orderid
-	 * @return
-	 */
-	@GetMapping("/details/orderid")
-	public ResponseEntity<List<OrderDetails>> getAllOrderDetails(@RequestParam(required = false) String orderid) {
 
+  @GetMapping("/details/{id}")
+	public ResponseEntity<List<OrderDetails>> getAllOrderDetails(@PathVariable("id") String id) {
+    //takes the id number in the URL to find all order details with that order number
+		//System.out.println("here");
 		try {
 			List<OrderDetails> details = new ArrayList<OrderDetails>();
-			//list all orderdetails
-			if (orderid == null)
-				detailsRepo.findAll().forEach(details::add);
-			else
+			//if there is not an id, return all of the order details
+			if (id == null) {
+				//System.out.println("null");
+				detailsRepo.findAll().forEach(details::add); 
+			}
+			else {
 			//list the orderdetails with order number 'orderid'
-				//detailsRepo.findByOrdersContaining(orderid).forEach(details::add);
-
+        //convert the string id to a long
+        //we need to use an OrdersRepository method to find the order with the given id
+				long oid = Long.parseLong(id);
+				Optional<Orders> order = orderRepo.findById(oid);
+        //if there isn't an order with this id, return nothing
+				if(order == null ) {
+					//System.out.println("null 2");
+					return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+				}	
+        //otherwise get the order and find the details which contain this order using the OrderDetailsRepository method findByOrders
+				Orders theorder = order.get();
+			//	System.out.println("order id " + theorder.getId());
+				detailsRepo.findByOrders(theorder).forEach(details::add);
+			}
 			if (details.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
@@ -93,4 +104,22 @@ public class OrderDetailsController {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		} 
 	}
+    @DeleteMapping("/details/{orderid}")
+	  public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("orderid") long orderid) {
+      //get the order using OrdersRepository 
+      //if the order doesn't exist, return nothing
+      //otherwise delete the details which contain this order
+	    try {
+	    	Optional<Orders> order = orderRepo.findById(orderid);
+	    	if(order == null ) {
+				System.out.println("null 2");
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			}
+	    	Orders theorder = order.get();
+	    	detailsRepo.deleteByOrders(theorder);
+	    	return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	    } catch (Exception e) {
+	      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+	  }
 }
