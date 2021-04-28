@@ -13,4 +13,5 @@ import org.premo.pizza.model.Orders;
 public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Long> {
   List<OrderDetails> findByOrders(Orders order);
 	List<OrderDetails> findByOrdersContaining(long orderid);
+  void deleteByOrders(Orders order);
 }
